@@ -7943,10 +7943,10 @@ natural-orderby@^1.0.2:
   resolved "https://registry.yarnpkg.com/natural-orderby/-/natural-orderby-1.0.2.tgz#287a4778217fbf6af0d704129d55ae90450f7a88"
   integrity sha512-V2CMcGpkL078lsYpUUjuZrFsYzdvL0eETYvw9N4dwQsz2gV8QMbKyJBgGdF6Xwg9OuZBzCvfbKu8ex2JXp8Cbw==
 
-navi-scripts@^0.10.5:
-  version "0.10.5"
-  resolved "https://registry.yarnpkg.com/navi-scripts/-/navi-scripts-0.10.5.tgz#49cb1bb931ca8e419d9d74e07cb477e06f2356c6"
-  integrity sha512-dj+OLo10RZHUCRokxQ4rXTYQtSIPHZBw59lLY7kuyfEkFV2Zip8MqNhzfcPRGR7AwP6ceII585thgEbjQiMUCg==
+navi-scripts@^0.10.6:
+  version "0.10.6"
+  resolved "https://registry.yarnpkg.com/navi-scripts/-/navi-scripts-0.10.6.tgz#df8070d9cc8916a2dee900578da3923e0fdf218d"
+  integrity sha512-zf4GZ2ORJCJJHeocKN19ufjfqCeYkgnW42cloqKrQ9RZrgDM9yvt32Q24IuLyOT6V0V2oBNnhI4vfvCocOFxCg==
   dependencies:
     "@babel/core" "^7.1.2"
     "@babel/preset-env" "^7.1.0"
@@ -9856,10 +9856,10 @@ react-error-overlay@^5.1.1:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.1.tgz#56f0439f001ff3588da0f479a86482ccb1e708cb"
   integrity sha512-gJcOyak5ri9mzhpFObSAkCqNNBCVZE8LaR/mX37agULgSL0dobgX11NVSIetvNzhHMkr6CIqV0xiutvvcjBtkw==
 
-react-navi@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/react-navi/-/react-navi-0.10.0.tgz#c4268266deedba7b1af1dac7617c1cebad08d8e6"
-  integrity sha512-bePoi2SeLW8gto6Zh3Z5p5cSb3aJ6DDdooCKyXNMV/AtDbYBDtFrYT7IA+EV9WzwIGIy5m9mo/lY3jbB8ZtH5Q==
+react-navi@^0.10.6:
+  version "0.10.6"
+  resolved "https://registry.yarnpkg.com/react-navi/-/react-navi-0.10.6.tgz#724ad7e4d126ce34cc61e59905f0d1603959d9ae"
+  integrity sha512-EwKzFSeyBhNqVA7sWdSt1rWG/NE5Vndjz1zgioiAk6cr9SSAfmMc9A5sSkY9qWIa8D8VNr7dJT8u3yPpDIrS2g==
   dependencies:
     "@types/history" "^4.6.2"
     "@types/react" "^16.4.6"

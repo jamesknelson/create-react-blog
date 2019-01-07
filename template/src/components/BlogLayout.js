@@ -7,8 +7,6 @@ import styles from './BlogLayout.module.css'
 
 function BlogLayout({ blogPathname, isViewingIndex }) {
   return (
-    // Once hooks are released, `<NavLoading>` will be able to be replaced
-    // with the new `useLoadingRoute` hooks.
     <NavLoading>
       {loadingRoute =>
         <div className={styles.container}>

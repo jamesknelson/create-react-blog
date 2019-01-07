@@ -44,7 +44,7 @@ function BlogIndexPage({ blogPathname, pageCount, pageNumber, postRoutes }) {
           <NavLink href='./tags'>
             Tags
           </NavLink> &bull;{' '}
-          <a href='https://github.com/frontarm/navi/tree/master/examples/blog'>
+          <a href='https://github.com/frontarm/create-react-blog'>
             Source
           </a>
         </div>

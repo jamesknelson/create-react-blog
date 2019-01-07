@@ -4,16 +4,18 @@ npx create-react-blog
 Create a blog with **create-react-app**, **MDX**, and **Navi**.<br />
 Themed after Gatsby's blog starter and Dan Abramov's overreacted.io.
 
+![Screenshot of generated app](./media/scrennshot.png)
+
 Comes with:
 
-⛑ TypeScript support<br />
 📡 RSS feed generation<br />
 🏷️ Tagged posts<br />
 🚀 HTML files for each URL<br />
 📜 Smooth scrolling to hash links<br />
 🔥 Animated page loading transition<br />
 🔗 Easy code splitting with `import()`<br />
-⏩ Paginated index page
+⏩ Paginated index page<br />
+⛑ TypeScript support
 
 
 Getting started
