@@ -46,11 +46,12 @@ function gitInit () {
 function getTar({
   user,
   repo,
-  path = '',
+  paths = [],
   name
 }) {
+  const path = paths.join('/')
   const url = `https://codeload.github.com/${user}/${repo}/tar.gz/master`
-  const cmd = `curl ${url} | tar -xz -C ${name} --strip=3 ${repo}-master/${path}`
+  const cmd = `curl ${url} | tar -xz -C ${name} --strip=${paths.length+1} ${repo}-master/${path}`
   exec(cmd, { stdio: 'inherit' })
 }
 
@@ -75,7 +76,7 @@ async function create(opts = {}) {
     name,
     user,
     repo,
-    path: paths.join('/')
+    paths,
   }))
 
   const templatePkg = require(
