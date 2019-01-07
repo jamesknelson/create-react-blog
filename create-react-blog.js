@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * This source code is licensed under the MIT license.
@@ -247,6 +248,46 @@ async function run(
       path.join(root, 'package.json'),
       JSON.stringify(appPackage, null, 2) + os.EOL
     );
+
+    const displayedCommand = useYarn ? 'yarn' : 'npm';
+
+    console.log();
+    console.log(`Success! Created ${appName} at ${root}`);
+    console.log('Inside that directory, you can run several commands:');
+    console.log();
+    console.log(chalk.cyan(`  ${displayedCommand} start`));
+    console.log('    Starts the development server.');
+    console.log();
+    console.log(
+      chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`)
+    );
+    console.log('    Bundles the app into static files for production.');
+    console.log();
+    console.log(chalk.cyan(`  ${displayedCommand} test`));
+    console.log('    Starts the test runner.');
+    console.log();
+    console.log(
+      chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}deploy`) +
+      ' and ' +
+      chalk.cyan(`${displayedCommand} ${useYarn ? '' : 'run '}deploy:prod`));
+    console.log('    Deploys your blog with Netlify.');
+    console.log();
+    console.log(
+      chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`)
+    );
+    console.log(
+      '    Removes this tool and copies build dependencies, configuration files'
+    );
+    console.log(
+      '    and scripts into the app directory. If you do this, you can’t go back!'
+    );
+    console.log();
+    console.log('We suggest that you begin by typing:');
+    console.log();
+    console.log(chalk.cyan('  cd'), appName);
+    console.log(`  ${chalk.cyan(`${displayedCommand} start`)}`);
+    console.log();
+    console.log('Happy hacking!');
   }
   catch (reason) {
     console.log();
