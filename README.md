@@ -1,10 +1,10 @@
 npx create-react-blog
 =====================
 
-Create a blog with **create-react-app**, **MDX**, and **Navi**.<br />
-Themed after Gatsby's blog starter and Dan Abramov's overreacted.io.
+Create a blog with **create-react-app**, [MDX](https://mdxjs.com), and [Navi](https://frontarm.com/navi/).<br />
+Themed after Gatsby's blog starter and Dan Abramov's [overreacted.io](https://overreacted.io).
 
-![Screenshot of generated app](https://raw.githubusercontent.com/frontarm/create-react-blog/master/media/screenshot.png)
+**[See an example of the deployed app →](https://create-react-blog.netlify.com/)**
 
 Comes with:
 
