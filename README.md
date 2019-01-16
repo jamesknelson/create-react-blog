@@ -90,6 +90,6 @@ export default {
 
 **To modify the generated HTML,** update the `src/renderPageToString.js` file.
 
-**To add non-blog pages,** just use [`Navi.createPage()`](https://frontarm.com/navi/reference/declarations/#createpage), [`Navi.createSwitch()`](https://frontarm.com/navi/reference/declarations/#createswitch) and [`Navi.createRedirect()`](https://frontarm.com/navi/reference/declarations/#createredirect). For an example, check the about page at [src/pages/about/index.js](src/pages/about/index.js). If you create a page, remember to add it to the root switch at [src/pages/index.js](src/pages/index.js).
+**To add non-blog pages,** just use [`Navi.createPage()`](https://frontarm.com/navi/reference/declarations/#createpage), [`Navi.createSwitch()`](https://frontarm.com/navi/reference/declarations/#createswitch) and [`Navi.createRedirect()`](https://frontarm.com/navi/reference/declarations/#createredirect). For an example, check the about page at [src/pages/about/index.js](template/src/pages/about/index.js). If you create a page, remember to add it to the root switch at [src/pages/index.js](template/src/pages/index.js).
 
 **To brush up on React's fundamentals,** check out the [React (without the buzzwords)](https://frontarm.com/courses/learn-raw-react/) and [Asynchronous JavaScript](https://frontarm.com/courses/async-javascript/) courses.
