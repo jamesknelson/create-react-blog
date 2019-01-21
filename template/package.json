@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "blueimp-md5": "^2.3.0",
     "feed": "^2.0.2",
     "import-all.macro": "^2.0.3",
     "lodash": "^4.17.11",

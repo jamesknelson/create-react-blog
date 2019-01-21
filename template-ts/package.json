@@ -7,6 +7,7 @@
     "@types/node": "10.12.18",
     "@types/react": "16.7.18",
     "@types/react-dom": "16.0.11",
+    "blueimp-md5": "^2.3.0",
     "feed": "^2.0.2",
     "import-all.macro": "^2.0.3",
     "lodash": "^4.17.11",
