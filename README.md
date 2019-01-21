@@ -73,6 +73,8 @@ How to...
 
 **To update the site's title,** edit the metadata in `src/siteMetadata.js`.
 
+**To your bio and photo,** edit the Bio component in `src/components/Bio.js`.
+
 **To change the site's colors,** edit the `:root` block in `src/index.module.css`.
 
 **To create a new post,** add a new directory to `src/pages/posts` that is prefixed with the new post's publication date, then create a `post.js` file inside it:
