@@ -2,8 +2,8 @@ import React from 'react'
 import {
   NavContent,
   NavLink,
-  NavLoading,
   NavNotFoundBoundary,
+  useLoadingRoute,
 } from 'react-navi'
 import siteMetadata from '../siteMetadata'
 import NotFoundPage from './NotFoundPage'
@@ -16,32 +16,27 @@ interface BlogLayoutProps {
 }
 
 function BlogLayout({ blogPathname, isViewingIndex }: BlogLayoutProps) {
+  let loadingRoute = useLoadingRoute()
+
   return (
-    // Once hooks are released, `<NavLoading>` will be able to be replaced
-    // with the new `useLoadingRoute` hooks.
-    <NavLoading>
-      {loadingRoute => (
-        <div className={styles.container}>
-          <LoadingIndicator active={!!loadingRoute} />
+    <div className={styles.container}>
+      <LoadingIndicator active={!!loadingRoute} />
 
-          {// Don't show the header on index pages, as it has a special
-          // header.
-          !isViewingIndex && (
-            <header>
-              <h3 className={styles.title}>
-                <NavLink href={blogPathname}>{siteMetadata.title}</NavLink>
-              </h3>
-            </header>
-          )}
-
-          <main>
-            <NavNotFoundBoundary render={() => <NotFoundPage />}>
-              <NavContent />
-            </NavNotFoundBoundary>
-          </main>
-        </div>
+      {// Don't show the header on index pages, as it has a special header.
+      !isViewingIndex && (
+        <header>
+          <h3 className={styles.title}>
+            <NavLink href={blogPathname}>{siteMetadata.title}</NavLink>
+          </h3>
+        </header>
       )}
-    </NavLoading>
+
+      <main>
+        <NavNotFoundBoundary render={() => <NotFoundPage />}>
+          <NavContent />
+        </NavNotFoundBoundary>
+      </main>
+    </div>
   )
 }
 
