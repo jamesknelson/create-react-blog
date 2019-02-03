@@ -17,8 +17,7 @@ function BlogLayout({ blogPathname, isViewingIndex }) {
     <div className={styles.container}>
       <LoadingIndicator active={!!loadingRoute} />
 
-      {// Don't show the header on index pages, as it has a special
-      // header.
+      {// Don't show the header on index pages, as it has a special header.
       !isViewingIndex && (
         <header>
           <h3 className={styles.title}>
