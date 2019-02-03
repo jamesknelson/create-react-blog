@@ -1,6 +1,7 @@
 import * as Navi from 'navi'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import { NavProvider, NavContent } from 'react-navi'
 import { renderCreateReactAppTemplate } from 'react-navi/create-react-app'
 import renderRSSFeedToString from './renderRSSFeedToString'
 
@@ -9,11 +10,7 @@ import renderRSSFeedToString from './renderRSSFeedToString'
  * to produce its statically rendered HTML.
  */
 async function renderPageToString({
-  // The URL to be rendered
-  url,
-
-  // The `exports` object passed to the call to `Navi.app()` in index.js
-  exports,
+  config,
 
   // Sets of JavaScript and CSS files that were used while rendering this
   // page
@@ -21,6 +18,9 @@ async function renderPageToString({
   
   // The `pages` switch passed to the call to `Navi.app()` in index.js
   pages,
+
+  // The URL to be rendered
+  url,
 }) {
   // Create an in-memory Navigation object with the given URL
   let navigation = Navi.createMemoryNavigation({
@@ -36,9 +36,13 @@ async function renderPageToString({
     return await renderRSSFeedToString(route.content)
   }
 
-  // Render the <App> element to a string, passing in `navigation` as a prop
+  // Render the content to a string
   let appHTML = ReactDOMServer.renderToString(
-    React.createElement(exports.App, { navigation })
+    React.createElement(
+      NavProvider,
+      { navigation },
+      React.createElement(NavContent)
+    )
   )
 
   // Add any stylesheets that were loaded to this page to the head, to avoid
@@ -69,6 +73,7 @@ async function renderPageToString({
   // then inject `appHTML` into the `<div id="root"></div>` tag,
   // and replace the `<title>` tag with `metaHTML`.
   return renderCreateReactAppTemplate({
+    config,
     insertIntoRootDiv: appHTML,
     replaceTitleWith: headHTML,
   })
