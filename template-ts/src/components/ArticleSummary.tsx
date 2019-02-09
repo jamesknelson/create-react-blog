@@ -5,18 +5,18 @@ import ArticleMeta from './ArticleMeta'
 import styles from './ArticleSummary.module.css'
 
 interface ArticleSummaryProps {
-  blogPathname: string
+  blogRoot: string
   route: Route
 }
 
-function ArticleSummary({ blogPathname, route }: ArticleSummaryProps) {
+function ArticleSummary({ blogRoot, route }: ArticleSummaryProps) {
   return (
     <article className={styles.ArticleSummary}>
       <h2>
         <NavLink href={route.url.href}>{route.title}</NavLink>
       </h2>
-      <ArticleMeta blogPathname={blogPathname} meta={route.meta} />
-      <p>{route.meta.spoiler}</p>
+      <ArticleMeta blogRoot={blogRoot} data={route.data} />
+      <p>{route.data.spoiler}</p>
     </article>
   )
 }

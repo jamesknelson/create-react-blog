@@ -11,11 +11,11 @@ import LoadingIndicator from './LoadingIndicator'
 import styles from './BlogLayout.module.css'
 
 interface BlogLayoutProps {
-  blogPathname: string
+  blogRoot: string
   isViewingIndex: boolean
 }
 
-function BlogLayout({ blogPathname, isViewingIndex }: BlogLayoutProps) {
+function BlogLayout({ blogRoot, isViewingIndex }: BlogLayoutProps) {
   return (
     // Once hooks are released, `<NavLoading>` will be able to be replaced
     // with the new `useLoadingRoute` hooks.
@@ -29,7 +29,7 @@ function BlogLayout({ blogPathname, isViewingIndex }: BlogLayoutProps) {
           !isViewingIndex && (
             <header>
               <h3 className={styles.title}>
-                <NavLink href={blogPathname}>{siteMetadata.title}</NavLink>
+                <NavLink href={blogRoot}>{siteMetadata.title}</NavLink>
               </h3>
             </header>
           )}

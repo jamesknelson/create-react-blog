@@ -1,36 +1,41 @@
 import React from 'react'
-import * as Navi from 'navi'
+import { composeMatchers, map, route, withContext, Route } from 'navi'
 import { join } from 'path'
 import { fromPairs } from 'lodash'
 import TagIndexPage from '../components/TagIndexPage'
 import TagPage from '../components/TagPage'
 import getTagsFromSiteMap from '../utils/getTagsFromSiteMap'
 
-const tagsSwitch = Navi.createSwitch({
-  paths: {
-    '/': Navi.createPage({
+interface TagsNavContext {
+  blogRoot: string
+  tagsRoot: string
+}
+
+const tagRoutes = composeMatchers(
+  withContext((req, context): TagsNavContext => ({
+    ...context,
+    tagsRoot: req.mountpath,
+  })),
+  map({
+    '/': route({
       title: 'Tags',
 
-      getContent: async env => {
+      getView: async req => {
         // Build a list of pages for each tag
-        let tagsPathname = env.mountname.replace(/\/$/, '')
-        let siteMap = await env.router.resolveSiteMap('/', {
+        let tagsPathname = req.mountpath.replace(/\/$/, '')
+        let siteMap = await req.router.resolveSiteMap('/', {
           predicate: segment =>
             segment.url.pathname.indexOf(tagsPathname) === -1,
         })
         let tags = getTagsFromSiteMap(siteMap)
         let tagRoutes = fromPairs(tags.map(name => [name.toLowerCase(), []]))
-        Object.entries(siteMap.pages).forEach(([href, route]) => {
-          let meta = route.meta
-          if (meta && meta.tags) {
-            meta.tags.forEach(tag => {
+        Object.values(siteMap.routes).forEach((route: Route) => {
+          let data = route.data
+          if (data && data.tags) {
+            data.tags.forEach(tag => {
               tag = tag.toLowerCase()
               if (tagRoutes[tag]) {
                 tagRoutes[tag].push(route)
-              } else {
-                console.warn(
-                  `The page at "${href}" used unindexed tag "${tag}".`,
-                )
               }
             })
           }
@@ -40,7 +45,7 @@ const tagsSwitch = Navi.createSwitch({
           <TagIndexPage
             tags={tags.map(name => ({
               name,
-              href: join(env.mountname, name.toLowerCase()),
+              href: join(req.mountpath, name.toLowerCase()),
               count: (tagRoutes[name] || []).length,
             }))}
           />
@@ -48,20 +53,19 @@ const tagsSwitch = Navi.createSwitch({
       },
     }),
 
-    '/:tag': Navi.createPage({
-      getTitle: env => env.params.tag,
-      getContent: async env => {
-        let lowerCaseTag = env.params.tag.toLowerCase()
+    '/:tag': route({
+      getTitle: req => req.params.tag,
+      getView: async (req, context) => {
+        let lowerCaseTag = req.params.tag.toLowerCase()
 
         // Build a list of pages that include the tag from the site map
-        let tagsPathname = join(env.mountname, '..').replace(/\/$/, '')
-        let siteMap = await env.router.resolveSiteMap('/', {
+        let siteMap = await req.router.resolveSiteMap(context.blogRoot, {
           predicate: segment =>
-            segment.url.pathname.indexOf(tagsPathname) === -1,
+            segment.url.pathname.indexOf(context.tagsRoot) === -1,
         })
-        let routes = [] as Navi.Route[]
-        Object.entries(siteMap.pages).forEach(([href, route]) => {
-          let tags = (route.meta && route.meta.tags) || []
+        let routes = [] as Route[]
+        Object.values(siteMap.routes).forEach((route: Route) => {
+          let tags = (route.data && route.data.tags) || []
           if (tags.find(metaTag => metaTag.toLowerCase() === lowerCaseTag)) {
             routes.push(route)
           }
@@ -69,14 +73,14 @@ const tagsSwitch = Navi.createSwitch({
 
         return (
           <TagPage
-            blogPathname={join(env.pathname, '..', '..')}
-            name={env.params.tag}
+            blogRoot={context.blogRoot}
+            name={req.params.tag}
             routes={routes}
           />
         )
       },
     }),
-  },
-})
+  })
+)
 
-export default tagsSwitch
+export default tagRoutes

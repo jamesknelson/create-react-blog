@@ -18,7 +18,7 @@ function Bio(props: BioProps) {
       ${styles.Bio}
       ${props.className || ''}
     `}>
-      <img src={photoURL} alt="James K Nelson" />
+      <img src={photoURL} alt="Me" />
       <p>
         Create a blog with a single command, by{' '}
         <a href="https://twitter.com/james_k_nelson/">James K Nelson</a>.

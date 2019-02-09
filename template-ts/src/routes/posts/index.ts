@@ -58,23 +58,23 @@ let posts = postDetails.map(({ slug, pathname, date }, i) => ({
       nextSlug = nextPostDetails.slug
     }
 
-    return Navi.createPage({
+    return Navi.route({
       title,
-      getMeta: env => ({
+      getData: (req, context: { blogRoot: string }) => ({
         date,
         pathname,
         slug,
         previousDetails: previousPost && {
           title: previousPost.title,
-          href: join(env.pathname, '../..', previousSlug),
+          href: join(context.blogRoot, 'posts', previousSlug),
         },
         nextDetails: nextPost && {
           title: nextPost.title,
-          href: join(env.pathname, '../..', nextSlug),
+          href: join(context.blogRoot, 'posts', nextSlug),
         },
         ...meta,
       }),
-      getContent: async () => {
+      getView: async () => {
         let { default: MDXComponent, ...other } = await getContent()
         return { MDXComponent, ...other }
       },

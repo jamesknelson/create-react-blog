@@ -1,6 +1,8 @@
 import path from 'path'
 import getTagsFromSiteMap from './src/utils/getTagsFromSiteMap'
 
+export const renderPageToString = require.resolve('./src/renderPageToString')
+
 export const resolveSiteMapOptions = {
   /**
    * navi-scripts will call this function when creating a list of URLs which
@@ -19,7 +21,7 @@ export const resolveSiteMapOptions = {
  * Get the file to write each URL to during the build
  */
 export function getPagePathname({ url }) {
-  if (url.pathname === '/rss') {
+  if (url.pathname === '/rss/') {
     return 'rss.xml'
   }
   if (url.pathname === '/') {
@@ -27,5 +29,3 @@ export function getPagePathname({ url }) {
   }
   return path.join(url.pathname.slice(1), 'index.html')
 }
-
-export { default as renderPageToString } from './src/renderPageToString'

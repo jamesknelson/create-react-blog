@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavContent, NavLink } from 'react-navi'
+import { NavLink, NavView, useCurrentRoute } from 'react-navi'
 import { MDXProvider } from '@mdx-js/tag'
 import siteMetadata from '../siteMetadata'
 import ArticleMeta from './ArticleMeta'
@@ -7,13 +7,15 @@ import Bio from './Bio'
 import styles from './BlogPostLayout.module.css'
 
 interface BlogPostLayoutProps {
-  blogPathname: string
+  blogRoot: string
 }
 
-function BlogPostLayout({ blogPathname }: BlogPostLayoutProps) {
+function BlogPostLayout({ blogRoot }: BlogPostLayoutProps) {
+  let { title, data, url } = useCurrentRoute()
+
   return (
-    <NavContent>
-      {({ MDXComponent, readingTime }, { title, meta, url }) => (
+    <NavView>
+      {({ MDXComponent, readingTime }) =>
         // The content for posts is an MDX component, so we'll need
         // to use <MDXProvider> to ensure that links are rendered
         // with <NavLink>, and thus use pushState.
@@ -23,8 +25,8 @@ function BlogPostLayout({ blogPathname }: BlogPostLayoutProps) {
               <NavLink href={url.pathname}>{title}</NavLink>
             </h1>
             <ArticleMeta
-              blogPathname={blogPathname}
-              meta={meta}
+              blogRoot={blogRoot}
+              data={data}
               readingTime={readingTime}
             />
           </header>
@@ -39,27 +41,27 @@ function BlogPostLayout({ blogPathname }: BlogPostLayoutProps) {
           </MDXProvider>
           <footer className={styles.footer}>
             <h3 className={styles.title}>
-              <NavLink href={blogPathname}>{siteMetadata.title}</NavLink>
+              <NavLink href={blogRoot}>{siteMetadata.title}</NavLink>
             </h3>
             <Bio className={styles.bio} />
             <section className={styles.links}>
-              {meta.previousDetails && (
+              {data.previousDetails && (
                 <NavLink
                   className={styles.previous}
-                  href={meta.previousDetails.href}>
-                  ← {meta.previousDetails.title}
+                  href={data.previousDetails.href}>
+                  ← {data.previousDetails.title}
                 </NavLink>
               )}
-              {meta.nextDetails && (
-                <NavLink className={styles.next} href={meta.nextDetails.href}>
-                  {meta.nextDetails.title} →
+              {data.nextDetails && (
+                <NavLink className={styles.next} href={data.nextDetails.href}>
+                  {data.nextDetails.title} →
                 </NavLink>
               )}
             </section>
           </footer>
         </article>
-      )}
-    </NavContent>
+      }
+    </NavView>
   )
 }
 
