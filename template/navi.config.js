@@ -1,5 +1,8 @@
 import path from 'path'
 import getTagsFromSiteMap from './src/utils/getTagsFromSiteMap'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export const renderPageToString = require.resolve('./src/renderPageToString')
 

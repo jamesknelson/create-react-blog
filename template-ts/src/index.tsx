@@ -18,7 +18,7 @@ register({
   // This will only be called when loading your app in the browser. It won't
   // be called when performing static generation.
   async main() {
-    let navigation = Navi.createBrowserNavigation({ routes })
+    let navigation = Navi.createBrowserNavigation({ routes, basename: process.env.PUBLIC_URL })
 
     // Wait until the navigation has loaded the page's content, or failed to do
     // so. If you want to load other data in parallel while the initial page is
