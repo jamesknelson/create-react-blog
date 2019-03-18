@@ -2,7 +2,7 @@ import register from "navi-scripts/register";
 import { createBrowserNavigation } from "navi";
 import React from "react";
 import ReactDOM from "react-dom";
-import { NaviProvider, View } from "react-navi";
+import { Router } from "react-navi";
 import "./index.module.css";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
@@ -31,12 +31,10 @@ register({
     let hasStaticContent = process.env.NODE_ENV === "production";
     let renderer = hasStaticContent ? ReactDOM.hydrate : ReactDOM.render;
 
-    // Start react, passing in the current navigation state via the
-    // NaviProvider.
+    // Start react, passing in the current navigation state and
+    // rendering the top-level view.
     renderer(
-      <NaviProvider navigation={navigation}>
-        <View />
-      </NaviProvider>,
+      <Router navigation={navigation} />,
       document.getElementById("root")
     )
 
