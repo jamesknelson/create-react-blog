@@ -15,7 +15,7 @@ interface BlogIndexPageProps {
 }
 
 function BlogIndexPage({
-  blogRoot: blogRoot,
+  blogRoot,
   pageCount,
   pageNumber,
   postRoutes,

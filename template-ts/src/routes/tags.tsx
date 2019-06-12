@@ -1,5 +1,5 @@
 import React from 'react'
-import { compose, crawl, mount, resolve, route, withContext, withCrawlerPatterns, Route, NaviRequest } from 'navi'
+import { compose, crawl, mount, resolve, route, withContext, withCrawlerPatterns, Route } from 'navi'
 import { join } from 'path'
 import { fromPairs } from 'lodash'
 import TagIndexPage from '../components/TagIndexPage'
