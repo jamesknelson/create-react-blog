@@ -77,7 +77,7 @@ How to...
 
 **To change the site's colors,** edit the `:root` block in `src/index.module.css`.
 
-**To create a new post,** add a new directory to `src/pages/posts` that is prefixed with the new post's publication date, then create a `post.js` file inside it:
+**To create a new post,** add a new directory to `src/routes/posts` that is prefixed with the new post's publication date, then create a `post.js` file inside it:
 
 ```jsx
 export default {
@@ -92,6 +92,6 @@ export default {
 
 **To modify the generated HTML,** update the `src/renderPageToString.js` file.
 
-**To add non-blog pages,** just use [`Navi.createPage()`](https://frontarm.com/navi/reference/declarations/#createpage), [`Navi.createSwitch()`](https://frontarm.com/navi/reference/declarations/#createswitch) and [`Navi.createRedirect()`](https://frontarm.com/navi/reference/declarations/#createredirect). For an example, check the about page at [src/pages/about/index.js](template/src/pages/about/index.js). If you create a page, remember to add it to the root switch at [src/pages/index.js](template/src/pages/index.js).
+**To add non-blog pages,** just use [`Navi.createPage()`](https://frontarm.com/navi/reference/declarations/#createpage), [`Navi.createSwitch()`](https://frontarm.com/navi/reference/declarations/#createswitch) and [`Navi.createRedirect()`](https://frontarm.com/navi/reference/declarations/#createredirect). For an example, check the about page at [src/routes/about/index.js](template/src/routes/about/index.js). If you create a page, remember to add it to the root switch at [src/routes/index.js](template/src/routes/index.js).
 
 **To brush up on React's fundamentals,** check out the [React (without the buzzwords)](https://frontarm.com/courses/learn-raw-react/) and [Asynchronous JavaScript](https://frontarm.com/courses/async-javascript/) courses.
