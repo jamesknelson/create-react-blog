@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Link, useCurrentRoute } from 'react-navi'
-import { MDXProvider } from '@mdx-js/tag'
+import { MDXProvider } from '@mdx-js/react'
 import siteMetadata from '../siteMetadata'
 import ArticleMeta from './ArticleMeta'
 import Bio from './Bio'
