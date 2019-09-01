@@ -1,4 +1,14 @@
-import { compose, lazy, map, mount, redirect, resolve, route, withContext, withView } from 'navi'
+import {
+  compose,
+  lazy,
+  map,
+  mount,
+  redirect,
+  resolve,
+  route,
+  withContext,
+  withView,
+} from 'navi'
 import React from 'react'
 import { join } from 'path'
 import { chunk, fromPairs } from 'lodash'
@@ -61,14 +71,11 @@ const routes = compose(
   withView((req, context) => {
     // Check if the current page is an index page by comparing the remaining
     // portion of the URL's pathname with the index page paths.
-    let isViewingIndex = req.path === '/' || /^\/page\/\d+\/$/.test(req.path)
+    let isViewingIndex = req.path === '/' || /^\/page\/\d+$/.test(req.path)
 
     // Render the application-wide layout
     return (
-      <BlogLayout
-        blogRoot={context.blogRoot}
-        isViewingIndex={isViewingIndex}
-      />
+      <BlogLayout blogRoot={context.blogRoot} isViewingIndex={isViewingIndex} />
     )
   }),
   mount({
@@ -84,7 +91,9 @@ const routes = compose(
     // Put posts under "/posts", so that they can be wrapped with a
     // "<BlogPostLayout />" that configures MDX and adds a post-specific layout.
     '/posts': compose(
-      withView((req, context) => <BlogPostLayout blogRoot={context.blogRoot} />),
+      withView((req, context) => (
+        <BlogPostLayout blogRoot={context.blogRoot} />
+      )),
       mount(fromPairs(posts.map(post => ['/' + post.slug, post.getPage]))),
     ),
 
