@@ -21,13 +21,14 @@
     "react-navi-helmet-async": "^0.13.3",
     "react-scripts-mdx": "3.0.3",
     "rimraf": "2.6.2",
+    "sitemap": "^6.3.5",
     "slugify": "1.3.2",
     "ts-node": "8.3.0",
     "typescript": "3.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && ts-node -O {\\\"module\\\":\\\"commonjs\\\"} node_modules/navi-scripts/bin/navi-scripts.js build",
+    "build": "react-scripts build && ts-node -O {\\\"module\\\":\\\"commonjs\\\"} node_modules/navi-scripts/bin/navi-scripts.js build && cp ./public/sitemap.xml ./build/sitemap.xml",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "navi-scripts serve",
