@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && navi-scripts build && cp ./public/sitemap.xml ./build/sitemap.xml",
+    "build": "react-scripts build && navi-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "navi-scripts serve",

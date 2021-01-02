@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && ts-node -O {\\\"module\\\":\\\"commonjs\\\"} node_modules/navi-scripts/bin/navi-scripts.js build && cp ./public/sitemap.xml ./build/sitemap.xml",
+    "build": "react-scripts build && ts-node -O {\\\"module\\\":\\\"commonjs\\\"} node_modules/navi-scripts/bin/navi-scripts.js build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "navi-scripts serve",

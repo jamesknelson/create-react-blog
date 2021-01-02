@@ -9,6 +9,9 @@ export function getPagePathname({ url }) {
   if (url.pathname === '/rss') {
     return 'rss.xml'
   }
+  if (url.pathname === '/sitemap') {
+    return 'sitemap.xml'
+  }
   if (url.pathname === '/') {
     return 'index.html'
   }
