@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /posts/*
+Allow: /about
+Allow: /sitemap.xml
+
+Disallow: /
