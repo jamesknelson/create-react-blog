@@ -104,6 +104,7 @@ const routes = compose(
     // but the route is defined here so that the static renderer will pick it
     // up.
     '/rss': route(),
+    '/sitemap': route()
   }),
 )
 

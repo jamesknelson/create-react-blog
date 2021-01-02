@@ -94,4 +94,6 @@ export default {
 
 **To add non-blog pages,** just use [`Navi.createPage()`](https://frontarm.com/navi/reference/declarations/#createpage), [`Navi.createSwitch()`](https://frontarm.com/navi/reference/declarations/#createswitch) and [`Navi.createRedirect()`](https://frontarm.com/navi/reference/declarations/#createredirect). For an example, check the about page at [src/routes/about/index.js](template/src/routes/about/index.js). If you create a page, remember to add it to the root switch at [src/routes/index.js](template/src/routes/index.js).
 
+**To generate a valid sitemap,** ensure `PUBLIC_URL` environment variable is set, such as `https://example.com`. Empty value is set in `.env` file.
+
 **To brush up on React's fundamentals,** check out the [React (without the buzzwords)](https://frontarm.com/courses/learn-raw-react/) and [Asynchronous JavaScript](https://frontarm.com/courses/async-javascript/) courses.
