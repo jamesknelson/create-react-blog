@@ -10,7 +10,7 @@ async function renderPageToString(props) {
   if (props.url.pathname === '/rss') {
     return await renderRSSFeedToString(props)
   }
-  if (props.url.pathname === '/xml') {
+  if (props.url.pathname === '/sitemap') {
     return await renderSitemapToString(props)
   }
   return renderReactPageToString(props)

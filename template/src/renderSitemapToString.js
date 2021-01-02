@@ -1,22 +1,18 @@
-import { crawl, resolve } from 'navi'
+import {crawl} from 'navi'
 import {SitemapStream, EnumChangefreq, streamToPromise} from "sitemap";
 import {writeFileSync} from "fs";
 
-async function renderSitemapToString({ routes }) {
-  let publicURL = process.env.PUBLIC_URL || '/'
-  let { paths } = await crawl({
+async function renderSitemapToString({routes}) {
+  let publicURL = process.env.PUBLIC_URL
+
+  let {paths} = await crawl({
     routes,
     root: '/',
   })
-  const sitemap = new SitemapStream( { hostname: publicURL } )
+  const sitemap = new SitemapStream({hostname: publicURL})
 
   for (let pathname of paths.sort()) {
     if ((pathname === `/about`) || (pathname.startsWith(`/posts`))) {
-      const route = await resolve({
-        routes,
-        url: pathname,
-      })
-
       sitemap.write({
         url: pathname,
         changefreq: EnumChangefreq.DAILY,
@@ -31,8 +27,8 @@ async function renderSitemapToString({ routes }) {
   // https://github.com/frontarm/navi/issues/92
 
   writeFileSync(
-      "public/sitemap.xml",
-      await streamToPromise(sitemap).then(buffer => buffer.toString())
+    "public/sitemap.xml",
+    await streamToPromise(sitemap).then(buffer => buffer.toString())
   )
 
 }
