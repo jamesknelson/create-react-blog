@@ -31,7 +31,7 @@ async function renderRSSFeed({ routes }) {
       routes,
       url: pathname,
     })
-    let meta = route.meta || {}
+    let meta = route.data || {}
     let link = path.join(publicURL, pathname)
 
     // Each post's content is just an MDX component, which can be rendered
@@ -46,7 +46,7 @@ async function renderRSSFeed({ routes }) {
       id: link,
       link: link,
       date: meta.date,
-      description: meta.description,
+      description: meta.spoiler,
       content,
       author: [
         {
